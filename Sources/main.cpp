@@ -8,14 +8,18 @@
 int main(int argc, char* argv[])
 {
     Display display(800, 600, "Kinky");
-	Vertex vertices[3] = { 	Vertex(glm::vec3(-0.5, -0.5, 0), glm::vec2(0.0,0.0)),
+	/*Vertex vertices[3] = { 	Vertex(glm::vec3(-0.5, -0.5, 0), glm::vec2(0.0,0.0)),
 							Vertex(glm::vec3(0, 0.5, 0), glm::vec2(0.5,1.0)),
 							Vertex(glm::vec3(0.5, 0-0.5, 0), glm::vec2(1.0,0.0)) };
 
-	Mesh mesh(vertices, 3);
+	unsigned int indices[3] = {0, 1, 2};
+
+	Mesh mesh(vertices, 3, indices, 3);*/
+
+	Mesh mesh("./res/cube.obj");
 	Shader shader("./res/basicShader");
-	Texture texture("./tex/rock.jpg");
-	Camera camera(glm::vec3(0,0,-3), 70.0f, 800.0/600.0, 0.01f, 1000.0f);
+	Texture texture("./tex/moon.jpg");
+	Camera camera(glm::vec3(0,0,-7), 70.0f, 800.0/600.0, 0.01f, 1000.0f);
 	Transform transform;
 
 	float counter = 0.0f;
@@ -26,7 +30,7 @@ int main(int argc, char* argv[])
 		transform.getPos().x = sinf(counter);
 		transform.getPos().z = cosf(counter);
 		//transform.getRot().z = counter;
-		transform.getRot().y = 3*counter;
+		transform.getRot().y = 2*counter;
 		//transform.setScale(glm::vec3(cosf(counter), cosf(counter), cosf(counter)));
 
 		shader.Bind();
