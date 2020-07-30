@@ -1,2 +1,2 @@
-*.o
+Sources/*.o
 exe
